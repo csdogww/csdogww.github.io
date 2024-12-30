@@ -8,9 +8,15 @@
     <!-- 引入 Fireworks 库 -->
     <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.9.0/dist/index.umd.min.js"></script>
     <style>
-        canvas {
-            width: 100%;
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
             height: 100%;
+        }
+
+        canvas {
             display: block;
         }
     </style>
@@ -20,14 +26,13 @@
     <canvas id="myCanvas"></canvas>
 
     <script>
-        // 确保 fireworks 对象已定义
+        // 确保库文件已加载
         window.addEventListener('DOMContentLoaded', (event) => {
-            // 检查 window.fireworks 是否已经定义
             if (window.fireworks && window.fireworks.Fireworks) {
                 const Fireworks = window.fireworks.Fireworks;
 
                 // 使用 Fireworks 构造函数
-                const myFireworks = new Fireworks(document.getElementById('myCanvas'), { // 你的 canvas 元素的 ID
+                const myFireworks = new Fireworks(document.getElementById('myCanvas'), {
                     hue: 120,
                     rocketsPoint: 50,
                     speed: 2,
@@ -73,6 +78,11 @@
 
                 // 启动烟花效果
                 myFireworks.start();
+
+                // 自动触发烟花（每30秒触发一次）
+                setInterval(() => {
+                    myFireworks.launch();
+                }, 30000);
             } else {
                 console.error('Fireworks库未正确加载');
             }
