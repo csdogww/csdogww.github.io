@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>烟花展示</title>
+    <title>自动烟花展示</title>
     <style>
         body,
         html {
@@ -94,11 +94,14 @@
             requestAnimationFrame(animate);
         }
 
-        canvas.addEventListener('click', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
+        function launchFirework() {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
             fireworks.push(new Firework(x, y));
-        });
+        }
+
+        // 每隔1秒自动发射烟花
+        setInterval(launchFirework, 1000);
 
         animate();
     </script>
