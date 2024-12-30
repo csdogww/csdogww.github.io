@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fireworks Demo</title>
     <!-- 引入 Fireworks 库 -->
-    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.10.1/dist/fireworks.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/fireworks.js"></script>
 </head>
 
 <body>
@@ -14,56 +14,58 @@
 
     <script>
         // 确保 fireworks 对象已定义
-        const { Fireworks } = fireworks;
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const { Fireworks } = fireworks;
 
-        // 使用 Fireworks 构造函数
-        const fireworks = new Fireworks({
-            target: 'myCanvas', // 你的 canvas 元素的 ID
-            hue: 120,
-            rocketsPoint: 50,
-            speed: 2,
-            acceleration: 1.05,
-            friction: 0.98,
-            gravity: 1.5,
-            particles: 50,
-            trace: 3,
-            explosion: 5,
-            autoresize: true,
-            brightness: {
-                min: 50,
-                max: 80,
-                decay: {
-                    min: 0.015,
-                    max: 0.03
+            // 使用 Fireworks 构造函数
+            const fireworks = new Fireworks({
+                target: 'myCanvas', // 你的 canvas 元素的 ID
+                hue: 120,
+                rocketsPoint: 50,
+                speed: 2,
+                acceleration: 1.05,
+                friction: 0.98,
+                gravity: 1.5,
+                particles: 50,
+                trace: 3,
+                explosion: 5,
+                autoresize: true,
+                brightness: {
+                    min: 50,
+                    max: 80,
+                    decay: {
+                        min: 0.015,
+                        max: 0.03
+                    }
+                },
+                boundaries: {
+                    x: 50,
+                    y: 50,
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                },
+                sound: {
+                    enable: true,
+                    files: [
+                        'explosion0.mp3',
+                        'explosion1.mp3',
+                        'explosion2.mp3'
+                    ],
+                    volume: {
+                        min: 4,
+                        max: 8
+                    }
+                },
+                mouse: {
+                    click: false,
+                    move: false,
+                    max: 1
                 }
-            },
-            boundaries: {
-                x: 50,
-                y: 50,
-                width: window.innerWidth,
-                height: window.innerHeight
-            },
-            sound: {
-                enable: true,
-                files: [
-                    'explosion0.mp3',
-                    'explosion1.mp3',
-                    'explosion2.mp3'
-                ],
-                volume: {
-                    min: 4,
-                    max: 8
-                }
-            },
-            mouse: {
-                click: false,
-                move: false,
-                max: 1
-            }
+            });
+
+            // 启动烟花效果
+            fireworks.start();
         });
-
-        // 启动烟花效果
-        fireworks.start();
     </script>
 </body>
 
