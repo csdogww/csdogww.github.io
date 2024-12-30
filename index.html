@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fireworks Demo</title>
-    <!-- 引入 Fireworks 库 -->
-    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.9.0/dist/index.umd.min.js"></script>
+    <!-- 引入 Fireworks 库，并使用 defer 属性 -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.9.0/dist/index.umd.min.js" defer></script>
     <style>
         body,
         html {
@@ -18,6 +18,8 @@
 
         canvas {
             display: block;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -27,7 +29,8 @@
 
     <script>
         // 确保库文件已加载
-        window.addEventListener('DOMContentLoaded', (event) => {
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // 检查 window.fireworks 是否已经定义
             if (window.fireworks && window.fireworks.Fireworks) {
                 const Fireworks = window.fireworks.Fireworks;
 
@@ -58,7 +61,7 @@
                         height: window.innerHeight
                     },
                     sound: {
-                        enable: true,
+                        enable: false, // 暂时禁用声音效果
                         files: [
                             'explosion0.mp3',
                             'explosion1.mp3',
