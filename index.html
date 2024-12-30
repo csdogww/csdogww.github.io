@@ -65,7 +65,7 @@
                 this.opacity = 1;
             }
             update() {
-                this.speed *= 0.7; // 模拟空气阻力
+                this.speed *= 0.98; // 模拟空气阻力
                 this.x += this.speed * Math.cos(this.angle);
                 this.y += this.speed * Math.sin(this.angle) + this.gravity;
                 this.opacity -= 0.02;
@@ -152,25 +152,25 @@
         }
 
         // 在绘制粒子时应用渐变
-        Particle.prototype.draw = function (ctx) {
-            const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-            gradient.addColorStop(0, this.color);
-            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        };
+        /* Particle.prototype.draw = function (ctx) {
+             const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+             gradient.addColorStop(0, this.color);
+             gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+             ctx.fillStyle = gradient;
+             ctx.beginPath();
+             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+             ctx.fill();
+         }; */
 
         // 在粒子更新方法中添加颜色变化
-        Particle.prototype.update = function () {
+        /*Particle.prototype.update = function () {
             this.x += this.speed * Math.cos(this.angle);
             this.y += this.speed * Math.sin(this.angle);
             this.life -= 0.01;
             // 颜色逐渐变化
             const hue = (parseInt(this.color.match(/\d+/)[0]) + 1) % 360;
             this.color = `hsl(${hue}, 100%, 50%)`;
-        };
+        };*/
 
 
         // 每隔1秒自动发射烟花
