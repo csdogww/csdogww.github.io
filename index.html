@@ -34,7 +34,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('fireworks-container');
-            const fireworks = new Fireworks(container, {
+            const { Fireworks } = fireworks; // 使用 destructuring 语法来获取 Fireworks 构造函数
+            const fireworksInstance = new Fireworks(container, {
                 autoresize: true,
                 opacity: 0.5,
                 acceleration: 1.05,
@@ -100,7 +101,7 @@
                 }
             });
 
-            fireworks.start();
+            fireworksInstance.start();
         });
     </script>
 </body>
