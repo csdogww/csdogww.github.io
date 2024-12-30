@@ -24,7 +24,7 @@
         window.addEventListener('DOMContentLoaded', (event) => {
             // 检查 window.fireworks 是否已经定义
             if (window.fireworks && window.fireworks.Fireworks) {
-                const { Fireworks } = window.fireworks;
+                const Fireworks = window.fireworks.Fireworks;
 
                 // 使用 Fireworks 构造函数
                 const myFireworks = new Fireworks(document.getElementById('myCanvas'), { // 你的 canvas 元素的 ID
